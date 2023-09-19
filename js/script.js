@@ -9,9 +9,9 @@ selectTag.forEach( (tag, id) => {
     for(const country_code in countries){
         //selecting english by default as FROM and languge Hindi as to language
         let selected;
-        if(id == 0 && country_code == "en-GB"){
+        if(id == 0 && country_code == "auto"){
             selected =  "selected";
-        }else if(id == 1 && country_code == "hi-IN"){
+        }else if(id == 1 && country_code == "hi"){
             selected =  "selected";
         }
         let option = `<option value="${country_code}" ${selected}>${countries[country_code]}</option>`;
@@ -39,14 +39,30 @@ translateBtn.addEventListener("click", () => {
     toText.setAttribute("placeholder", "Translating...")
 
 
-    let apiUrl = `https://api.mymemory.translated.net/get?q=${text}&langpair=${translateFrom}|${translateTo}`;
+    // let apiUrl = `https://api.mymemory.translated.net/get?q=${text}&langpair=${translateFrom}|${translateTo}`;
+    //google translator api
+    const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${translateFrom}&tl=${translateTo}&dt=t&q=${encodeURI(text)}`;
+    const xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200)
+      {
+          const responseReturned = JSON.parse(this.responseText);
+          const translations = responseReturned[0].map((text) => text[0]);
+          const outputText = translations.join(" ");
+  
+          toText.textContent = outputText;
+      }
+    };
+    xhttp.open("GET", url);
+    xhttp.send();
+
     //fethhing api url and returning it with parse into js object
     //and in another then method recieving that obj
-    fetch(apiUrl).then((res) => res.json()).then((data) => {
-        // console.log(data);
-        toText.value = data.responseData.translatedText;
-        toText.setAttribute("placeholder", "Translation");
-    });
+    // fetch(apiUrl).then((res) => res.json()).then((data) => {
+    //     // console.log(data);
+    //     toText.value = data.responseData.translatedText;
+    //     toText.setAttribute("placeholder", "Translation");
+    // });
 });
 
 icons.forEach((icon) => {

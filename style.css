@@ -16,6 +16,7 @@ body{
 
 .container{
     width: 690px;
+    max-width: 90%;
     background: #fff;
     border-radius: 7px;
     padding: 30px;
@@ -38,43 +39,65 @@ body{
 
 .text-input textarea{
     height: 250px;
+    max-height: 60%;
     width: 100%;
     border: none;
     outline: none;
     background: none;
-    font-size: 18px;
+    font-size: 1.1rem;
     border-radius: 5px;
     padding: 10px 15px;
     resize: none;
 }
 
-.controls, li, .icons, .icons i{
+ul{
+    padding: 12px 15px;
+    list-style: none;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.controls{
-    padding: 12px 15px;
-    list-style: none;
+
+li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.controls .row.from .icons{
-    padding-right: 15px;
+ul #from{
+    padding: 0 0.5rem;
+}
+
+ul #to{
+    padding: 0 0.5rem;
+}
+
+
+ul #from .icons{
+    width: 5rem;
+    margin-right: 1rem;
+    padding-right: 1rem;
     border-right: 1px solid #bbb;
+    display: flex;
+    justify-content: space-between;
 }
 
-.controls .row.to .icons{
-    padding-left: 15px;
+ul #to .icons{
+    width: 5rem;
+    margin-left: 1rem;
+    padding-left: 1rem;
     border-left: 1px solid #bbb;
+    display: flex;
+    justify-content: space-between;
 }
 
-.controls .icons{
+ul .icons{
     width: 38%;
 }
 
-.controls .icons i{
-    width: 50px;
+
+ul .icons i{
     color: #9f9f9f;
     font-size: 14px;
     cursor: pointer;
@@ -82,18 +105,18 @@ body{
 
 }
 
-.controls .row select{
+ul .row select{
     border: none;
     outline: none;
-    font-size: 18px;
+    font-size: 0.8rem;
     background: none;
 }
 
-.controls .exchange{
-    column-rule: #9f9f9f;
-    font-size: 16px;
+ul .exchange{
+    color: #9f9f9f;
+    font-size: 1rem;
     cursor: pointer;
-}
+} 
 
 .container button{
     width: 100%;
