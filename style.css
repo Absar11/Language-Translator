@@ -51,15 +51,19 @@ body{
 }
 
 ul{
+    max-width: 100%;
     padding: 12px 15px;
     list-style: none;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /* background: #c5c839; */
 }
 
 
 li{
+    max-width: auto;
+    /* background: #075875; */
     display: flex;
     justify-content: center;
     align-items: center;
